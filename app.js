@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const adopt = require('./routes/adopt');
+const adopt = require('./routes/users');
 const connectDB = require('./db/connect');
 const port = process.env.PORT || 5000
 
@@ -15,12 +15,17 @@ app.use('/api/v1/adopt', adopt);
 app.use(notFound);
 app.use(errorHandlerMiddleware);
 
+//sign in/up
+app.get('/', (req,res) => {
+    res.send('hello')
+})
+
 const serverInit = async () => {
     try{
         await connectDB();
-        app.listen(3000, () => console.log(`listening on http://${port}`))
+        app.listen(3000, () => console.log(`listening on http:/${port}`))
     }catch(error){
         console.error('Error starting server:', error)
-    }
+    }   
 }
 serverInit();

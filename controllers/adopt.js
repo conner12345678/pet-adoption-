@@ -8,12 +8,8 @@ const newUser = asyncWrapper(async (req, res) => {
     res.status(201).json({user});
 })
 const user = asyncWrapper(async (req, res) => {
-    const {id:userID} = req.params
-    const user = await User.findOne({ _id:userID})
-    if(!user){
-        throw new createCustomError("User not found", 404)
-    }
-    res.status(200).json({user: user})
+    const users = await User.findOne({})
+    res.status(200).json({users})
 })
 
 module.exports = {newUser, user}
