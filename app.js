@@ -4,6 +4,8 @@ const adopt = require('./routes/users');
 const connectDB = require('./db/connect');
 const port = process.env.PORT || 5000
 const path = require('path')
+const {newUser, users} = require('./controllers/adopt')
+const User = require('./models/User')
 
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
@@ -18,9 +20,10 @@ app.use('/api/v1/adopt', adopt);
 app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, 'public/sign_in.html'))
 })
-// app.get('/signup', (req,res) => {
-//     res.sendFile(path.join(__dirname, 'public/sign_up.html'))
-// })
+
+app.get('/sign/up', (req,res) => {
+    res.sendFile(path.join(__dirname, 'public/sign_up.html'))
+})
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);

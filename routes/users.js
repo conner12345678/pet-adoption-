@@ -3,9 +3,11 @@ const router = express.Router();
 
 const {
     newUser,
-    user,
+    users,
+    findUser,
 } = require('../controllers/adopt')
 
-router.route('/').get(user).post(newUser)
+router.route('/sign/in').post(findUser)
+router.route('/sign/up/add').post(newUser)
 
 module.exports = router
