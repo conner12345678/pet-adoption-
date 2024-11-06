@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a pet</title>
+</head>
+<body>
+    <form action="/api/v1/adopt/new/pet" method="POST" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label>Breed:</label>
+        <input type="text" id="breed" name="breed" required>
+        <label>Age:</label>
+        <input type="number" id="age" name="age" required>
+        <label>description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <label>Image:</label>
+        <input type="text" id="image" name="image" required>
+        <input type="submit" value="Add pet">
+    </form>
+</body>
+</html>
