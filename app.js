@@ -7,9 +7,18 @@ const path = require('path')
 const {newUser, users} = require('./controllers/adopt')
 const User = require('./models/User')
 const Pet = require('./models/Pet')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/'})
+const cloudinary = require('cloudinary').v2;
 
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
 app.set('view engine', 'ejs');
 app.set('views', './views')
@@ -39,7 +48,7 @@ app.get('/pets/new', (req, res) => {
 })
 
 app.use(notFound);
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
 
 
 
