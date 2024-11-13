@@ -12,6 +12,9 @@
         <p><%= pet.age %></p>
         <p><%= pet.description %></p>
         <img src="<%= pet.image %>" alt="test">
+        <form action="/pet/<%= pet.id %>" method="POST">
+            <input type="submit" name="pet" id="pet" value="View more">
+        </form>
     <% }) %>
 </body>
 </html>

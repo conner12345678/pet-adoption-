@@ -29,6 +29,21 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide an image for the pet"],
         trim: true
+    },
+    behavior: {
+        type: String,
+        required: [true, "Please tell us how good your pet is"],
+        trim: true,
+        maxlength: [50, 'Behavior can not exceed 50 characters']
+    },
+    history: {
+        type: String,
+        required: [true, "Please provide some history about your pet"],
+        trim: true,
+        maxlength: [1000, 'History can not exceed 1000 characters']
+    },
+    id: {
+        type: Number
     }
 })
 

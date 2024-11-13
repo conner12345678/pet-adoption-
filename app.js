@@ -13,6 +13,7 @@ const cloudinary = require('cloudinary').v2;
 
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
+const { console } = require('inspector');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -47,8 +48,15 @@ app.get('/pets/new', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/newPet.html'))
 })
 
+app.get('/pet/:id', async (req, res) => {
+    const pet = await Pet.findById(req.params.id)
+    res.render('animal', { pet })
+})
+
 app.use(notFound);
-// app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware)
+
+
 
 
 
