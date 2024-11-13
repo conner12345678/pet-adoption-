@@ -21,7 +21,7 @@ const findUser = asyncWrapper(async (req,res) => {
         const user = await User.findOne({ username, password })
         console.log(user)
         if(user){
-            res.redirect('/sign/up')
+            res.redirect('/signup')
         } else if(!user) {
             res.status(401).send("Invalid credentials")
         }

@@ -3,16 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form action="/api/v1/adopt/sign/in" method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" id="username" placeholder="Username here" required>
-        <label>Password:</label>
-        <input type="password" name="password" id="password" placeholder="Password here" required>
-        <input type="submit" value="Sign in">
-    </form>
-    <p>Dont have an acount? <a href="/sign/up">Sign up.</a></p>
+    <section class="background-animation"></section>
+    
+    <div class="container">
+        <div class="drop">
+            <div class="content">
+                <h2>Sign in</h2>
+                <form action="/api/v1/adopt/sign/in" method="POST">
+                    <div class="inputBox">
+                        <input type="text" name="username" id="username" placeholder="Username here" required>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" id="password" placeholder="Password here" required>
+                    </div>
+                    <div class="inputBox submit">
+                        <input type="submit" value="Sign in">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <a href="#" class="btns forget-password">Forget Password</a>
+        <a href="/sign/up" class="btns signup">Sign up</a>
+    </div>
+    
+    <script>
+        // Adding animated background elements
+        for (let i = 1; i <= 400; i++) { // Use a smaller number to test performance
+            let box = document.createElement('span');
+            document.querySelector('.background-animation').appendChild(box);
+        }
+    </script>
 </body>
 </html>

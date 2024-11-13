@@ -18,7 +18,7 @@ cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
-  });
+});
 
 app.set('view engine', 'ejs');
 app.set('views', './views')
@@ -34,7 +34,7 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, 'public/sign_in.html'))
 })
 
-app.get('/sign/up', (req,res) => {
+app.get('/signup', (req,res) => {
     res.sendFile(path.join(__dirname, 'public/sign_up.html'))
 })
 
