@@ -37,13 +37,16 @@ const newPet = asyncWrapper(async (req, res) => {
     }
     
     try {
-        const pet = await Pet.create(req.body);
+        const {name, breed, age, description, image, behavior, history} = req.body
+        const pets = await Pet.find({})
+        const id = pets.length+1
+        const newPet = {name, breed, age, description, image, behavior, history, id}
+        await newPet.save()
         res.redirect('/pets');
     } catch (error) {
         console.error('Error creating pet:', error.message);
         res.status(400).send(error.message);
     }
 });
-
 
 module.exports = {newUser, users, findUser, newPet}
