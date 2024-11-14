@@ -8,7 +8,7 @@ const cloudinary = require('cloudinary').v2
 const newUser = asyncWrapper(async (req, res) => {
     const user = User.create(req.body);
     console.log(req.body);
-    res.redirect('/pets')
+    res.redirect('/index')
 })
 const users = asyncWrapper(async (req, res) => {
     const users = await User.findOne({})
