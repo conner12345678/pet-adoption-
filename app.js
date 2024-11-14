@@ -61,6 +61,10 @@ app.get('/index', async (req, res) => {
     res.render('index');
 });
 
+app.get('/pet/admin/:id', async (req, res) => {
+    const pet = await Pet.findOne({id: req.params.id}).lean()
+    res.render('admin', { pet })
+})
 app.use(notFound);
 
 
