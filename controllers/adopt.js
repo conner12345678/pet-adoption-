@@ -8,7 +8,7 @@ const cloudinary = require('cloudinary').v2
 const newUser = asyncWrapper(async (req, res) => {
     const user = User.create(req.body);
     console.log(req.body);
-    res.redirect('/')
+    res.redirect('/pets')
 })
 const users = asyncWrapper(async (req, res) => {
     const users = await User.findOne({})
@@ -22,6 +22,7 @@ const findUser = asyncWrapper(async (req,res) => {
         console.log(user)
         if(user){
             res.redirect('/index')
+
         } else if(!user) {
             res.status(401).send("Invalid credentials")
         }
@@ -40,7 +41,7 @@ const newPet = asyncWrapper(async (req, res) => {
         const {name, breed, age, description, image, behavior, history} = req.body
         const pets = await Pet.find({})
         const id = pets.length+1
-        const newPet = {name, breed, age, description, image, behavior, history, id}
+        const newPet = new Pet({ name, breed, age, description, image, behavior, history, id })
         await newPet.save()
         res.redirect('/pets');
     } catch (error) {
@@ -49,4 +50,29 @@ const newPet = asyncWrapper(async (req, res) => {
     }
 });
 
-module.exports = {newUser, users, findUser, newPet}
+const newComment = asyncWrapper(async (req, res) => {
+    try {
+        const {contact} = req.body
+        const pet = await Pet.findOne({id: req.params.id})
+        pet.contact.push(contact)
+        await pet.save()
+        res.redirect('/pet/'+req.params.id)
+    }catch(error){
+        console.error('Error creating comment:', error.message);
+        res.status(400).send(error.message);
+    }
+})
+
+const updatePet = asyncWrapper(async (req, res) => {
+    try {
+        const pet = await Pet.findOneAndUpdate({id: req.params.id}, req.body, {
+            new: true,
+            runValidators: true
+        })
+        res.redirect('/pets')
+    } catch (error) {
+        console.error('Error updating pet:', error.message);
+        res.status(400).send(error.message);
+    }
+})
+module.exports = {newUser, users, findUser, newPet, newComment, updatePet}

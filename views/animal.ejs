@@ -13,5 +13,16 @@
     <p><%= pet.behavior %></p>
     <p><%= pet.history %></p>
     <img src="<%= pet.image %>" alt="pet's image">
+    <form action="/api/v1/adopt/newComment/<%= pet.id %>" method="POST">
+        <label>Comment on pet</label>
+        <textarea name="contact" id="contact"></textarea>
+        <input type="submit" name="" id="">
+    </form>
+    <form action="/pets">
+        <input type="submit" value="Back to pets">
+    </form>
+    <% pet.contact.forEach(con => { %>
+        <p><%= con %></p>
+    <% }) %>
 </body>
 </html>

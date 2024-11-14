@@ -42,8 +42,13 @@ const petSchema = new mongoose.Schema({
         trim: true,
         maxlength: [1000, 'History can not exceed 1000 characters']
     },
+    contact: {
+        type: Array,
+        trim: true,
+        maxlength: [2000, 'No larger then 2000 characters']
+    },
     id: {
-        type: Number
+        type: String
     }
 })
 
