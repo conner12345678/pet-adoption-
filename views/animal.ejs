@@ -23,7 +23,9 @@
         <input type="submit" value="Back to pets">
     </form>
     <% pet.contact.forEach(con => { %>
-        <p><%= con %></p>
+        <div style="background-color: white; margin: 10px; border-radius: 10px;">
+            <p><%= con %></p>
+        </div>
     <% }) %>
     <script>
         const menuToggle = document.querySelector('.menuToggle');
