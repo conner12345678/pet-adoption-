@@ -17,6 +17,11 @@ body {
     line-height: 1.6;
 }
 
+:root
+{
+	--bg: #f0e4d7;
+}
+
 .navigation 
 {
 	position: fixed;
