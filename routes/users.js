@@ -20,10 +20,12 @@ const {
     users,
     findUser,
     newPet,
+    newComment
 } = require('../controllers/adopt')
 
 router.route('/sign/in').post(findUser)
 router.route('/sign/up/add').post(newUser)
 router.route('/new/pet').post(upload.single('image'), newPet)
+router.route('/newComment').post(newComment)
 
 module.exports = router

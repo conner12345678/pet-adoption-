@@ -13,7 +13,6 @@ const cloudinary = require('cloudinary').v2;
 
 const notFound = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const { console } = require('inspector');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -49,7 +48,7 @@ app.get('/pets/new', (req, res) => {
 })
 
 app.get('/pet/:id', async (req, res) => {
-    const pet = await Pet.findById(req.params.id)
+    const pet = await Pet.findOne({id: req.params.id})
     res.render('animal', { pet })
 })
 
@@ -62,8 +61,9 @@ app.use(notFound);
 
 const serverInit = async () => {
     try{
+        
+        app.listen(3000, () => {console.log(`listening on http://localhost:${port}`)})
         await connectDB();
-        app.listen(3000, () => console.log(`listening on http://localhost:${port}`))
     }catch(error){
         console.error('Error starting server:', error)
     }   

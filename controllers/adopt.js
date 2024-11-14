@@ -40,7 +40,7 @@ const newPet = asyncWrapper(async (req, res) => {
         const {name, breed, age, description, image, behavior, history} = req.body
         const pets = await Pet.find({})
         const id = pets.length+1
-        const newPet = {name, breed, age, description, image, behavior, history, id}
+        const newPet = new Pet({ name, breed, age, description, image, behavior, history, id })
         await newPet.save()
         res.redirect('/pets');
     } catch (error) {
@@ -49,4 +49,14 @@ const newPet = asyncWrapper(async (req, res) => {
     }
 });
 
-module.exports = {newUser, users, findUser, newPet}
+const newComment = asyncWrapper(async (req, res) => {
+    try {
+        const {contact} = req.body
+        const newComment = Pet.contact.push(contact)
+    }catch(error){
+        console.error('Error creating comment:', error.message);
+        res.status(400).send(error.message);
+    }
+})
+
+module.exports = {newUser, users, findUser, newPet, newComment}
