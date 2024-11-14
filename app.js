@@ -58,7 +58,7 @@ app.get('/pet/admin/:id', async (req, res) => {
 })
 
 app.use(notFound);
-// app.use(errorHandlerMiddleware)
+app.use(errorHandlerMiddleware)
 
 
 
