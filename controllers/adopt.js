@@ -39,9 +39,10 @@ const newPet = asyncWrapper(async (req, res) => {
     
     try {
         const {name, breed, age, description, image, behavior, history} = req.body
+        const contact = []
         const pets = await Pet.find({})
         const id = pets.length+1
-        const newPet = new Pet({ name, breed, age, description, image, behavior, history, id })
+        const newPet = new Pet({ name, breed, age, description, image, behavior, history, contact, id })
         await newPet.save()
         res.redirect('/pets');
     } catch (error) {
