@@ -8,7 +8,7 @@ const cloudinary = require('cloudinary').v2
 const newUser = asyncWrapper(async (req, res) => {
     const user = User.create(req.body);
     console.log(req.body);
-    res.redirect('/')
+    res.redirect('/pets')
 })
 const users = asyncWrapper(async (req, res) => {
     const users = await User.findOne({})
@@ -21,7 +21,7 @@ const findUser = asyncWrapper(async (req,res) => {
         const user = await User.findOne({ username, password })
         console.log(user)
         if(user){
-            res.redirect('/signup')
+            res.redirect('/pets')
         } else if(!user) {
             res.status(401).send("Invalid credentials")
         }
@@ -52,11 +52,26 @@ const newPet = asyncWrapper(async (req, res) => {
 const newComment = asyncWrapper(async (req, res) => {
     try {
         const {contact} = req.body
-        const newComment = Pet.contact.push(contact)
+        const pet = await Pet.findOne({id: req.params.id})
+        pet.contact.push(contact)
+        await pet.save()
+        res.redirect('/pet/'+req.params.id)
     }catch(error){
         console.error('Error creating comment:', error.message);
         res.status(400).send(error.message);
     }
 })
 
-module.exports = {newUser, users, findUser, newPet, newComment}
+const updatePet = asyncWrapper(async (req, res) => {
+    try {
+        const pet = await Pet.findOneAndUpdate({id: req.params.id}, req.body, {
+            new: true,
+            runValidators: true
+        })
+        res.redirect('/pets')
+    } catch (error) {
+        console.error('Error updating pet:', error.message);
+        res.status(400).send(error.message);
+    }
+})
+module.exports = {newUser, users, findUser, newPet, newComment, updatePet}

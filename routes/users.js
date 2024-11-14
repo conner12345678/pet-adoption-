@@ -20,12 +20,14 @@ const {
     users,
     findUser,
     newPet,
-    newComment
+    newComment,
+    updatePet
 } = require('../controllers/adopt')
 
 router.route('/sign/in').post(findUser)
 router.route('/sign/up/add').post(newUser)
 router.route('/new/pet').post(upload.single('image'), newPet)
-router.route('/newComment').post(newComment)
+router.route('/newComment/:id').post(newComment)
+router.route('/petUpdate/:id').post(updatePet)
 
 module.exports = router

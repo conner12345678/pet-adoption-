@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/api/v1/adopt/petUpdate/<%= pet.id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= pet.name %>">
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" value="<%= pet.breed %>">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="<%= pet.age %>">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"><%= pet.description %></textarea>
+        <img src="<%= pet.image %>" alt="">
+        <label for="behavior">Behavior:</label>
+        <input type="text" id="behavior" name="behavior" value="<%= pet.behavior %>">
+        <label for="history">History:</label>
+        <textarea id="history" name="history"><%= pet.history %></textarea>
+        <input type="submit" value="Update pet">
+    </form>
+</body>
+</html>

@@ -52,6 +52,11 @@ app.get('/pet/:id', async (req, res) => {
     res.render('animal', { pet })
 })
 
+app.get('/pet/admin/:id', async (req, res) => {
+    const pet = await Pet.findOne({id: req.params.id})
+    res.render('admin', { pet })
+})
+
 app.use(notFound);
 // app.use(errorHandlerMiddleware)
 
