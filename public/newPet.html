@@ -7,22 +7,52 @@
     <link rel="stylesheet" href="/Gotei13.css">
 </head>
 <body>
-    <form action="/api/v1/adopt/new/pet" method="POST" enctype="multipart/form-data">
-        <label>Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label>Breed:</label>
-        <input type="text" id="breed" name="breed" required>
-        <label>Age:</label>
-        <input type="number" id="age" name="age" required>
-        <label>description:</label>
-        <textarea id="description" name="description" required></textarea>
-        <label>Behavior:</label>
-        <input type="text" name="behavior" id="behavior">
-        <label>History:</label>
-        <textarea name="history" id="history"></textarea>
-        <label>Image:</label>
-        <input type="file" id="image" name="image" required>
-        <input type="submit" value="Add pet">
-    </form>
+
+
+
+    <section class="banner">
+        <header>
+            <a href="#" class="logo">Tails<span>Scales</span></a>
+            <div class="toggle"></div>
+        </header>
+        <div class="content">
+            <form action="/api/v1/adopt/new/pet" method="POST" enctype="multipart/form-data">
+                <label>Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label>Breed:</label>
+                <input type="text" id="breed" name="breed" required>
+                <label>Age:</label>
+                <input type="number" id="age" name="age" required>
+                <label>description:</label>
+                <textarea id="description" name="description" required></textarea>
+                <label>Behavior:</label>
+                <input type="text" name="behavior" id="behavior">
+                <label>History:</label>
+                <textarea name="history" id="history"></textarea>
+                <label>Image:</label>
+                <input type="file" id="image" name="image" required>
+                <input type="submit" value="Add pet">
+            </form>
+        </div>
+        <ul class="sci">
+            <li><a href="https://www.facebook.com"><img src="/facebook.png"></a></li>
+            <li><a href="#"><img src="/twitter.png"></a></li>
+            <li><a href="https://www.instagram.com"><img src="/instagram.png"></a></li>
+        </ul>
+        <ul class="menu">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/pets/new">Donate Pets</a></li>
+            <li><a href="/pets">gallery</a></li>
+        </ul>
+        </section>
+        <script>
+        let banner = document.querySelector('.banner');
+        let menutoggle = document.querySelector('.toggle');
+        menutoggle.onclick = function(){
+            menutoggle.classList.toggle('active');
+            banner.classList.toggle('active');
+        }
+        </script>
+
 </body>
 </html>

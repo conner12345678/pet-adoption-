@@ -6,8 +6,8 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #f7e2d2, #f9f4f2);
-    color: #333;
+    background: #21283a;
+    color: #ffffff;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ body {
 
 .pet-details-container h1 {
     font-size: 2rem;
-    color: #ff6c1a;
+    color: #1de5ff;
     margin-bottom: 15px;
 }
 
@@ -68,7 +68,7 @@ body {
 
 button,
 input[type="submit"] {
-    background-color: #ff8c42;
+    background-color: #1de5ff;
     color: #fff;
     font-size: 1rem;
     padding: 10px 20px;
@@ -82,20 +82,20 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
-    background-color: #ff6c1a;
+    background-color: #1de5ff;
     transform: scale(1.05);
 }
 
 button:active,
 input[type="submit"]:active {
-    background-color: #e65a00;
+    background-color: #1de5ff;
     transform: scale(0.98);
 }
 
 .comment-display p {
     background: #ffffff;
     color: #444;
-    border-left: 5px solid #ff8c42;
+    border-left: 5px solid #1de5ff;
     border-radius: 8px;
     padding: 15px 20px;
     margin: 10px 0;
@@ -361,13 +361,13 @@ form textarea {
 }
 
 form textarea:focus {
-    border: 1px solid #ff8c42;
+    border: 1px solid #1de5ff;
     outline: none;
     background-color: #fff;
 }
 
 form input[type="submit"] {
-    background-color: #ff8c42;
+    background-color: #1de5ff;
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
@@ -380,11 +380,11 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background-color: #ff6c1a;
+    background-color: #1de5ff;
     transform: scale(1.05);
 }
 
 form input[type="submit"]:active {
-    background-color: #e65a00;
+    background-color: #1de5ff;
     transform: scale(0.98);
 }

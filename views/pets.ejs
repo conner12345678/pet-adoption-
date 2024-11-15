@@ -3,62 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets</title>
-    <link rel="stylesheet" href="/auraMaster.css">
+    <title>Tales and Scales - Pet Adoption Clinic</title>
+    <link rel="stylesheet" href="auraMaster.css">
 </head>
 <body>
-    <div class="navigation">
-        <div class="menuToggle"></div>
-        <ul>
-            <li class="list">
-                <a href="/index" style="--clr:#f44336;">
-                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="/pets/new" style="--clr:#0fc70f;">
-                    <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
-                    <span class="text">New Pet</span>
-                </a>
-            </li>
-            </li>
-            <li class="list active">
-                <a href="/pets" style="--clr:#2196f3;">
-                    <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
-                    <span class="text">Gallery</span>
-                </a>
-            <div class="indicator"></div>
-        </ul>
+
+<!-- Pet Display Section -->
+
+
+<section class="banner">
+    <header>
+        <a href="#" class="logo">Tails<span>Scales</span></a>
+        <div class="toggle"></div>
+    </header>
+    <div class="content">
+            <div class="pet-gallery">
+                <% pets.forEach(pet => { %>
+                    <div class="pet-card">
+                        <p><%= pet.name %></p>
+                        <p><%= pet.breed %></p>
+                        <p><%= pet.age %></p>
+                        <p><%= pet.description %></p>
+                        <img src="<%= pet.image %>" alt="<%= pet.name %>">
+                        <form action="/pet/<%= pet.id %>" method="GET">
+                            <input type="submit" name="pet" id="pet" value="View more">
+                        </form>
+                    </div>
+                <% }) %>
+        </div>
     </div>
-    <% pets.forEach(pet => {%>
-        <p><%= pet.name %></p>
-        <p><%= pet.breed %></p>
-        <p><%= pet.age %></p>
-        <p><%= pet.description %></p>
-        <img src="<%= pet.image %>" alt="test">
-        <form action="/pet/<%= pet.id %>" method="GET">
-            <input type="submit" name="pet" id="pet" value="View more">
-        </form>
-    <% }) %>
+    <ul class="sci">
+        <li><a href="https://www.facebook.com"><img src="facebook.png"></a></li>
+        <li><a href="#"><img src="twitter.png"></a></li>
+        <li><a href="https://www.instagram.com"><img src="instagram.png"></a></li>
+    </ul>
+    <ul class="menu">
+        <li><a href="/index">Home</a></li>
+        <li><a href="/pets/new">Donate Pets</a></li>
+        <li><a href="/pets">gallery</a></li>
+    </ul>
+    </section>
     <script>
-        const menuToggle = document.querySelector('.menuToggle');
-        const navigation = document.querySelector('.navigation');
-        menuToggle.onclick = function(){
-            navigation.classList.toggle('active')
-        }
-    
-        const list = document.querySelectorAll('.list');
-        function activeLink(){
-            list.forEach((item) =>
-            item.classList.remove('active'));
-            this.classList.add('active')
-        }
-        list.forEach((item) =>
-        item.addEventListener('click',activeLink));
+    let banner = document.querySelector('.banner');
+    let menutoggle = document.querySelector('.toggle');
+    menutoggle.onclick = function(){
+        menutoggle.classList.toggle('active');
+        banner.classList.toggle('active');
+    }
     </script>
-    
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
