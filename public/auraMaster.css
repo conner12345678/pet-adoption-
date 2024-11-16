@@ -6,17 +6,18 @@ padding: 0;
 box-sizing: border-box;
 font-family: 'Poppins', sans-serif;
 }
-section 
-{
-position: relative;
-width: 100%;
-min-height: 100vh;
-padding: 0 100px;
-display: flex;
-align-items: center;
-background: #21283a;
-overflow-x: hidden;
-}
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* For stacking the elements */
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    padding: 0;
+    background: #21283a;
+    overflow-x: hidden;
+}  
 section::before 
 {
 content: '';
@@ -360,4 +361,60 @@ input[type="submit"]:active {
     background-color: #1de5ff;
     transform: translateY(0px);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    position: relative;
+    background: #2563eb; /* Darker blue background */
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 20px;
+    width: 80%; /* Adjust width for responsiveness */
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Form legend */
+form legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff; /* White text */
+    margin-right: 15px;
+}
+
+/* Form labels */
+form label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #ffffff; /* White text */
+}
+
+/* Form inputs */
+form input[type="text"],
+form input[type="number"] {
+    padding: 5px;
+    border: 2px solid #3b82f6; /* Light blue border */
+    border-radius: 5px;
+    background-color: #ffffff; /* White background */
+    color: #1e3a8a; /* Dark blue text */
+    margin-right: 10px;
+}
+
+/* Form button */
+form input[type="submit"] {
+    padding: 8px 20px;
+    background-color: #3b82f6; /* Light blue background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #1e40af; /* Darker blue on hover */
 }
