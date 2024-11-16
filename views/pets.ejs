@@ -13,9 +13,19 @@
 
 <section class="banner">
     <header>
-        <a href="#" class="logo">Tails<span>Scales</span></a>
+        <a href="" class="logo">Tails<span>Scales</span></a>
         <div class="toggle"></div>
     </header>
+    <form action="/api/v1/adopt/petSearch" method="POST">
+        <legend>Search</legend>
+        <label for="">Name:</label>
+        <input type="text" name="name" id="name">
+        <label for="">Breed:</label>
+        <input type="text" name="breed" id="breed">
+        <label for="">Age:</label>
+        <input type="number" name="age" id="age">
+        <input type="submit" value="Search">
+    </form>
     <div class="content">
             <div class="pet-gallery">
                 <% pets.forEach(pet => { %>

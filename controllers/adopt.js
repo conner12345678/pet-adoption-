@@ -76,4 +76,14 @@ const updatePet = asyncWrapper(async (req, res) => {
         res.status(400).send(error.message);
     }
 })
-module.exports = {newUser, users, findUser, newPet, newComment, updatePet}
+
+const petSearch = asyncWrapper(async (req, res) => {
+    const body = {}
+    if(req.body.name) body.name = req.body.name
+    if(req.body.breed) body.breed = req.body.breed
+    if(req.body.age) body.age = req.body.age
+    const pets = await Pet.find(body)
+    res.render('pets', { pets: pets })
+})
+
+module.exports = {newUser, users, findUser, newPet, newComment, updatePet, petSearch}
